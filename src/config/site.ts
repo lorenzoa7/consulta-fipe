@@ -6,5 +6,4 @@ export const siteRoutes = {
 export type SiteRoutes = typeof siteRoutes
 
 export const myGithubProfileUrl = 'https://github.com/lorenzoa7'
-export const projectRepositoryUrl =
-  'https://github.com/lorenzoa7/futures-pocket-trader'
+export const projectRepositoryUrl = 'https://github.com/lorenzoa7/consulta-fipe'
