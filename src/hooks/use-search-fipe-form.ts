@@ -3,10 +3,17 @@ import {
   searchFipeSchema,
 } from '@/schemas/search-fipe-schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 export function useSearchFipeForm() {
+  const [open, setOpen] = useState({
+    type: false,
+    brand: false,
+    model: false,
+    year: false,
+  })
+
   const form = useForm<SearchFipeSchema>({
     resolver: zodResolver(searchFipeSchema),
     defaultValues: {
@@ -47,5 +54,5 @@ export function useSearchFipeForm() {
     }
   }, [modelWatch, resetField])
 
-  return { form, typeWatch, brandWatch, modelWatch, yearWatch }
+  return { form, typeWatch, brandWatch, modelWatch, yearWatch, open, setOpen }
 }

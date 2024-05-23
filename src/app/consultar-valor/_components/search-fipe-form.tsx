@@ -32,7 +32,7 @@ import { CheckIcon, ChevronsUpDownIcon, SearchIcon } from 'lucide-react'
 import { FipeInformationCard } from './fipe-information-card'
 
 export function SearchFipeForm() {
-  const { form, typeWatch, brandWatch, modelWatch, yearWatch } =
+  const { form, typeWatch, brandWatch, modelWatch, yearWatch, open, setOpen } =
     useSearchFipeForm()
 
   const {
@@ -59,7 +59,12 @@ export function SearchFipeForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Tipo de veículo</FormLabel>
-              <Popover>
+              <Popover
+                open={open.type}
+                onOpenChange={(value) =>
+                  setOpen((state) => ({ ...state, type: value }))
+                }
+              >
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
@@ -95,6 +100,7 @@ export function SearchFipeForm() {
                             key={type}
                             onSelect={() => {
                               form.setValue('type', type)
+                              setOpen((state) => ({ ...state, type: false }))
                             }}
                           >
                             <CheckIcon
@@ -127,7 +133,12 @@ export function SearchFipeForm() {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Marca</FormLabel>
-                <Popover>
+                <Popover
+                  open={open.brand}
+                  onOpenChange={(value) =>
+                    setOpen((state) => ({ ...state, brand: value }))
+                  }
+                >
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
@@ -161,6 +172,7 @@ export function SearchFipeForm() {
                               key={brand.codigo}
                               onSelect={() => {
                                 form.setValue('brand', brand.codigo)
+                                setOpen((state) => ({ ...state, brand: false }))
                               }}
                             >
                               <CheckIcon
@@ -194,7 +206,12 @@ export function SearchFipeForm() {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Modelo</FormLabel>
-                <Popover>
+                <Popover
+                  open={open.model}
+                  onOpenChange={(value) =>
+                    setOpen((state) => ({ ...state, model: value }))
+                  }
+                >
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
@@ -228,6 +245,7 @@ export function SearchFipeForm() {
                               key={String(model.codigo)}
                               onSelect={() => {
                                 form.setValue('model', String(model.codigo))
+                                setOpen((state) => ({ ...state, model: false }))
                               }}
                             >
                               <CheckIcon
@@ -261,7 +279,12 @@ export function SearchFipeForm() {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Ano</FormLabel>
-                <Popover>
+                <Popover
+                  open={open.year}
+                  onOpenChange={(value) =>
+                    setOpen((state) => ({ ...state, year: value }))
+                  }
+                >
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
@@ -294,6 +317,7 @@ export function SearchFipeForm() {
                               key={year.codigo}
                               onSelect={() => {
                                 form.setValue('year', year.codigo)
+                                setOpen((state) => ({ ...state, year: false }))
                               }}
                             >
                               <CheckIcon
