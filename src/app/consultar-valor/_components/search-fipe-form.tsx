@@ -1,7 +1,7 @@
 'use client'
 
 import { getBrands } from '@/api/get-brands'
-import { getFipeValue } from '@/api/get-fipe-value'
+import { getFipeInformation } from '@/api/get-fipe-information'
 import { getModels } from '@/api/get-models'
 import { getYears } from '@/api/get-years'
 import { Button } from '@/components/ui/button'
@@ -94,13 +94,13 @@ export function SearchFipeForm() {
   })
 
   const {
-    data: fipeValue,
-    isFetching: isFetchingFipeValue,
-    refetch: fetchFipeValue,
+    data: fipeInformation,
+    isFetching: isFetchingFipeInformation,
+    refetch: fetchFipeInformation,
   } = useQuery({
     queryKey: ['fipe-value', typeWatch, brandWatch, modelWatch, yearWatch],
     queryFn: () =>
-      getFipeValue({
+      getFipeInformation({
         type: typeWatch,
         brandId: brandWatch,
         modelId: modelWatch,
@@ -111,7 +111,7 @@ export function SearchFipeForm() {
   })
 
   function onSubmit() {
-    fetchFipeValue()
+    fetchFipeInformation()
   }
 
   useEffect(() => {
@@ -410,26 +410,28 @@ export function SearchFipeForm() {
               )}
             />
           )}
-          {!isFetchingFipeValue && fipeValue && (
+          {!isFetchingFipeInformation && fipeInformation && (
             <div className="flex gap-2 rounded-lg bg-emerald-700 p-5 text-primary-foreground dark:bg-emerald-300">
-              {vehicleTypeIds[fipeValue.tipoVeiculo] === 'carros' && (
+              {vehicleTypeIds[fipeInformation.tipoVeiculo] === 'carros' && (
                 <CarIcon className="size-8" />
               )}
-              {vehicleTypeIds[fipeValue.tipoVeiculo] === 'motos' && (
+              {vehicleTypeIds[fipeInformation.tipoVeiculo] === 'motos' && (
                 <BikeIcon className="size-8" />
               )}
-              {vehicleTypeIds[fipeValue.tipoVeiculo] === 'caminhoes' && (
+              {vehicleTypeIds[fipeInformation.tipoVeiculo] === 'caminhoes' && (
                 <TruckIcon className="size-8" />
               )}
 
               <div className="flex flex-col gap-2">
-                <span className="font-bold">{`${fipeValue.marca} ${fipeValue.modelo} ${fipeValue.anoModelo}`}</span>
-                <span className="text-3xl font-black">{fipeValue.valor}</span>
+                <span className="font-bold">{`${fipeInformation.marca} ${fipeInformation.modelo} ${fipeInformation.anoModelo}`}</span>
+                <span className="text-3xl font-black">
+                  {fipeInformation.valor}
+                </span>
               </div>
             </div>
           )}
           <Button type="submit">
-            {isFetchingFipeValue ? (
+            {isFetchingFipeInformation ? (
               <Spinner className="mr-2 size-4" />
             ) : (
               <SearchIcon className="mr-2 size-4" />

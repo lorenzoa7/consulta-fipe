@@ -1,14 +1,14 @@
 import { api } from '@/lib/axios'
 import { VehicleType } from '@/schemas/search-fipe-schema'
 
-export type GetFipeValueRequest = {
+export type GetFipeInformationRequest = {
   type: VehicleType
   brandId: string
   modelId: string
   yearId: string
 }
 
-export type GetFipeValueResponse = {
+export type GetFipeInformationResponse = {
   TipoVeiculo: 1 | 2 | 3
   Valor: string
   Marca: string
@@ -20,7 +20,7 @@ export type GetFipeValueResponse = {
   SiglaCombustivel: string
 }
 
-function formatApiResponse(data: GetFipeValueResponse) {
+function formatApiResponse(data: GetFipeInformationResponse) {
   return {
     tipoVeiculo: data.TipoVeiculo,
     valor: data.Valor,
@@ -34,13 +34,13 @@ function formatApiResponse(data: GetFipeValueResponse) {
   }
 }
 
-export async function getFipeValue({
+export async function getFipeInformation({
   type,
   brandId,
   modelId,
   yearId,
-}: GetFipeValueRequest) {
-  const response = await api.get<GetFipeValueResponse>(
+}: GetFipeInformationRequest) {
+  const response = await api.get<GetFipeInformationResponse>(
     `/${type}/marcas/${brandId}/modelos/${modelId}/anos/${yearId}`,
   )
 
