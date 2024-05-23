@@ -51,7 +51,7 @@ export function SearchFipeForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(() => fetchFipeInformation())}
-        className="w-1/3 space-y-6"
+        className="w-full space-y-6"
       >
         <FormField
           control={form.control}

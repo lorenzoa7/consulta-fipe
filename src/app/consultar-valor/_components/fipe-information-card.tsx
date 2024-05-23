@@ -2,13 +2,17 @@ import { getFipeInformation } from '@/api/get-fipe-information'
 import { Button } from '@/components/ui/button'
 import { vehicleTypeIds } from '@/config/vehicle'
 import { useAppStore } from '@/hooks/use-app-store'
-import { BikeIcon, BookmarkIcon, CarIcon, TruckIcon } from 'lucide-react'
+import { BikeIcon, BookmarkIcon, CarIcon, TruckIcon, XIcon } from 'lucide-react'
 
 type Props = {
   fipeInformation: Awaited<ReturnType<typeof getFipeInformation>>
+  isInSavedList?: boolean
 }
 
-export function FipeInformationCard({ fipeInformation }: Props) {
+export function FipeInformationCard({
+  fipeInformation,
+  isInSavedList = false,
+}: Props) {
   const { savedInformation } = useAppStore()
   const isSaved = savedInformation.some(
     (item) => item.id === fipeInformation.id,
@@ -32,6 +36,17 @@ export function FipeInformationCard({ fipeInformation }: Props) {
     })
   }
 
+  function handleRemove() {
+    useAppStore.setState((state) => {
+      return {
+        ...state,
+        savedInformation: state.savedInformation.filter(
+          (item) => item.id !== fipeInformation.id,
+        ),
+      }
+    })
+  }
+
   return (
     <div className="flex gap-2 rounded-lg bg-emerald-700 p-5 text-primary-foreground dark:bg-emerald-300">
       {vehicleTypeIds[fipeInformation.tipoVeiculo] === 'carros' && (
@@ -51,19 +66,32 @@ export function FipeInformationCard({ fipeInformation }: Props) {
           atualizado em: {fipeInformation.updatedAt.toLocaleString()}
         </span>
       </div>
-      <Button
-        size="sm"
-        variant="secondary"
-        type="button"
-        className="ml-auto"
-        onClick={handleSave}
-      >
-        <BookmarkIcon
-          data-saved={isSaved}
-          className="mr-2 size-4 data-[saved=true]:fill-foreground"
-        />
-        Salvar
-      </Button>
+      {isInSavedList ? (
+        <Button
+          size="sm"
+          variant="secondary"
+          type="button"
+          className="ml-auto"
+          onClick={handleRemove}
+        >
+          <XIcon className="mr-2 size-4" />
+          Remover
+        </Button>
+      ) : (
+        <Button
+          size="sm"
+          variant="secondary"
+          type="button"
+          className="ml-auto"
+          onClick={handleSave}
+        >
+          <BookmarkIcon
+            data-saved={isSaved}
+            className="mr-2 size-4 data-[saved=true]:fill-foreground"
+          />
+          Salvar
+        </Button>
+      )}
     </div>
   )
 }
