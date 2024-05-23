@@ -15,9 +15,9 @@ export function Sidebar() {
 
   return (
     <aside className="flex flex-col space-y-6 border-r border-border">
-      <header className="flex items-center gap-3 border-b border-border p-6">
-        <LogoIcon className="size-6" />
-        <h1 className="text-xl font-semibold">consulta fipe</h1>
+      <header className="flex select-none items-center gap-3 border-b border-border p-6">
+        <LogoIcon className="size-6 dark:fill-foreground" />
+        <h1 className="text-xl font-semibold">Consulta Fipe</h1>
       </header>
 
       <main className="grow flex-col px-3">
@@ -43,8 +43,8 @@ export function Sidebar() {
         </nav>
       </main>
       <footer className="mt-auto flex flex-col items-center gap-2 border-t border-border p-6">
-        <div className="flex items-center gap-2">
-          <span>Check it on</span>
+        <div className="flex items-center gap-1.5">
+          <span>Acesse o</span>
           <Link
             href={projectRepositoryUrl}
             className={cn(
@@ -53,7 +53,7 @@ export function Sidebar() {
             )}
             target="_blank"
           >
-            GitHub <GithubIcon />
+            GitHub <GithubIcon className="fill-foreground" />
           </Link>
         </div>
       </footer>

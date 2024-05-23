@@ -1,3 +1,6 @@
+import { siteRoutes } from '@/config/site'
+import { redirect } from 'next/navigation'
+
 export default function Home() {
-  return <main>Hello World</main>
+  redirect(siteRoutes.consultarValor)
 }
