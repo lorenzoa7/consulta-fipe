@@ -1,5 +1,6 @@
 import { api } from '@/lib/axios'
 import { VehicleType } from '@/schemas/search-fipe-schema'
+import { v4 as uuid } from 'uuid'
 
 export type GetFipeInformationRequest = {
   type: VehicleType
@@ -22,6 +23,8 @@ export type GetFipeInformationResponse = {
 
 function formatApiResponse(data: GetFipeInformationResponse) {
   return {
+    id: uuid(),
+    updatedAt: new Date(),
     tipoVeiculo: data.TipoVeiculo,
     valor: data.Valor,
     marca: data.Marca,
