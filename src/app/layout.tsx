@@ -1,3 +1,4 @@
+import { Sidebar } from '@/components/core/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { roboto } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
@@ -26,6 +27,7 @@ export default function RootLayout({
           enableSystem
         >
           <div className="grid h-screen grid-cols-[14rem_1fr]">
+            <Sidebar />
             <main className="flex flex-1 flex-col">{children}</main>
           </div>
           <Toaster richColors />
