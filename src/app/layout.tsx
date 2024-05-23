@@ -1,5 +1,6 @@
 import QueryProvider from '@/components/core/query-provider'
 import { Sidebar } from '@/components/core/sidebar'
+import { SidebarSheet } from '@/components/core/sidebar-sheet'
 import { Toaster } from '@/components/ui/sonner'
 import { roboto } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
@@ -28,9 +29,12 @@ export default function RootLayout({
           enableSystem
         >
           <QueryProvider>
-            <div className="grid h-screen grid-cols-[14rem_1fr]">
+            <div className="grid h-screen lg:grid-cols-1">
+              <SidebarSheet />
               <Sidebar />
-              <main className="flex flex-1 flex-col">{children}</main>
+              <main className="mt-20 flex flex-1 flex-col lg:ml-56 lg:mt-0">
+                {children}
+              </main>
             </div>
             <Toaster richColors />
           </QueryProvider>

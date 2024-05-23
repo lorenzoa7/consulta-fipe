@@ -11,7 +11,10 @@ import { SearchFipeForm } from './_components/search-fipe-form'
 
 export default function ConsultarValor() {
   return (
-    <Section title="Consultar valor" className="flex gap-4">
+    <Section
+      title="Consultar valor"
+      className="flex flex-col gap-4 xl:flex-row"
+    >
       <Card className="flex-1">
         <CardHeader>
           <CardTitle>Consultar tabela Fipe</CardTitle>

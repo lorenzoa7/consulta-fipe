@@ -7,7 +7,7 @@ import { FipeInformationCard } from './fipe-information-card'
 export function SavedInformationList() {
   const { savedInformation } = useAppStore()
   return (
-    <ScrollArea className="h-[46rem]">
+    <ScrollArea className="md:h-[26rem] lg:h-[28rem] xl:h-[30rem] 2xl:h-[40rem]">
       <div className="space-y-2 py-1 pr-3">
         {savedInformation.length > 0 ? (
           savedInformation.map((item) => (

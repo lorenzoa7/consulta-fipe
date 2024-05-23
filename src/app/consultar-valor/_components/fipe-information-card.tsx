@@ -48,7 +48,7 @@ export function FipeInformationCard({
   }
 
   return (
-    <div className="flex gap-2 rounded-lg bg-emerald-700 p-5 text-primary-foreground dark:bg-emerald-300">
+    <div className="flex flex-col gap-2 rounded-lg bg-emerald-700 p-5 text-primary-foreground dark:bg-emerald-300 md:flex-row">
       {vehicleTypeIds[fipeInformation.tipoVeiculo] === 'carros' && (
         <CarIcon className="size-8" />
       )}

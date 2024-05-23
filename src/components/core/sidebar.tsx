@@ -14,7 +14,7 @@ export function Sidebar() {
   const paths = pathname.split('/')
 
   return (
-    <aside className="flex flex-col space-y-6 border-r border-border">
+    <aside className="fixed left-0 z-30 hidden h-screen w-56 flex-col space-y-6 border-r border-border lg:flex">
       <header className="flex select-none items-center gap-3 border-b border-border p-6">
         <LogoIcon className="size-6 dark:fill-foreground" />
         <h1 className="text-xl font-semibold">Consulta Fipe</h1>
