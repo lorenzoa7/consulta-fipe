@@ -9,7 +9,7 @@ import { ThemeProvider } from 'next-themes'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Consulta Fipe',
+  title: 'Pesquisa Fipe',
   description:
     'Aplicativo para consulta e visualização de veículos na tabela Fipe.',
 }

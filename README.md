@@ -1,4 +1,4 @@
-# 🚗 Consulta Fipe</h1>
+# 🚗 Pesquisa Fipe</h1>
 
 <div style="display: inline_block">
   <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
@@ -7,11 +7,11 @@
   <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
 </div>
 
-![Consulta Fipe Demo](public/github/demo_consultafipe.gif)
+![Pesquisa Fipe Demo](public/github/demo_consultafipe.gif)
 
 
 ## 📑 About
-<p>Consulta Fipe is an app designed to assist in researching the current value of a vehicle. The application consumes a public API that provides updated data from the table created by the Economic Research Institute Foundation and displays it on the screen in an appealing and intuitive manner for the user. 
+<p>Pesquisa Fipe is an app designed to assist in researching the current value of a vehicle. The application consumes a public API that provides updated data from the table created by the Economic Research Institute Foundation and displays it on the screen in an appealing and intuitive manner for the user. 
 
 It also allows the user to save the value for comparison purposes, taking into account the time the search was made.
 </p>
@@ -28,7 +28,7 @@ It also allows the user to save the value for comparison purposes, taking into a
 ### 1. Clone this repository:
 <pre>
   <code>
-    git clone https://github.com/lorenzoa7/consulta-fipe.git
+    git clone https://github.com/lorenzoa7/pesquisa-fipe.git
   </code>
 </pre>
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { navConfig } from '@/config/nav'
-import { projectRepositoryUrl } from '@/config/site'
+import { myGithubProfileUrl, projectRepositoryUrl } from '@/config/site'
 import { formatPathname } from '@/functions/format-pathname'
 import { cn } from '@/lib/utils'
 import { PanelLeftOpenIcon } from 'lucide-react'
@@ -30,7 +30,7 @@ export function SidebarSheet() {
           <aside className="flex h-full flex-col space-y-6">
             <header className="flex select-none items-center gap-3 border-b border-border p-6">
               <LogoIcon className="size-6 dark:fill-foreground" />
-              <h1 className="text-xl font-semibold">Consulta Fipe</h1>
+              <h1 className="text-xl font-semibold">Pesquisa Fipe</h1>
             </header>
 
             <main className="grow flex-col px-3">
@@ -56,18 +56,32 @@ export function SidebarSheet() {
                 })}
               </nav>
             </main>
-            <footer className="mt-auto flex flex-col items-center gap-2 border-t border-border p-6">
+            <footer className="mt-auto flex flex-col items-center gap-4 border-t border-border p-6">
+              <div className="flex items-center gap-1.5 text-sm">
+                <span>Criado por</span>
+                <Link
+                  href={myGithubProfileUrl}
+                  className={cn(
+                    buttonVariants({ size: 'none', variant: 'linkSecondary' }),
+                    'flex items-center gap-2 text-sm',
+                  )}
+                  target="_blank"
+                >
+                  lorenzo aceti
+                </Link>
+              </div>
               <div className="flex items-center gap-1.5">
                 <span>Acesse o</span>
                 <Link
                   href={projectRepositoryUrl}
                   className={cn(
                     buttonVariants({ size: 'none', variant: 'linkSecondary' }),
-                    'flex items-center gap-2 text-base',
+                    'flex items-center gap-2 text-base group',
                   )}
                   target="_blank"
                 >
-                  GitHub <GithubIcon className="fill-foreground" />
+                  GitHub{' '}
+                  <GithubIcon className="fill-foreground transition-colors group-hover:fill-foreground/75" />
                 </Link>
               </div>
             </footer>
