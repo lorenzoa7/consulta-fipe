@@ -17,30 +17,10 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { AppearanceSchema, appearanceSchema } from '@/schemas/appearance-schema'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useTheme } from 'next-themes'
-import { useForm } from 'react-hook-form'
+import { useAppearanceForm } from '@/hooks/use-appearance-form'
 
 export default function AppearanceForm() {
-  const { setTheme, resolvedTheme } = useTheme()
-  const form = useForm<AppearanceSchema>({
-    resolver: zodResolver(appearanceSchema),
-    defaultValues: {
-      theme: resolvedTheme,
-    },
-  })
-
-  function onSubmit(data: AppearanceSchema) {
-    const { theme } = data
-
-    if (theme === 'light' || theme === 'dark') {
-      setTheme(theme)
-      return
-    }
-
-    setTheme('light')
-  }
+  const { form, onSubmit } = useAppearanceForm()
 
   return (
     <Form {...form}>
