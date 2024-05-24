@@ -1,6 +1,4 @@
 import QueryProvider from '@/components/core/query-provider'
-import { Sidebar } from '@/components/core/sidebar'
-import { SidebarSheet } from '@/components/core/sidebar-sheet'
 import { Toaster } from '@/components/ui/sonner'
 import { roboto } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
@@ -20,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={cn('font-roboto antialiased', roboto.variable)}
         suppressHydrationWarning
@@ -32,13 +30,7 @@ export default function RootLayout({
           enableSystem
         >
           <QueryProvider>
-            <div className="grid h-screen lg:grid-cols-1">
-              <SidebarSheet />
-              <Sidebar />
-              <main className="mt-20 flex flex-1 flex-col lg:ml-56 lg:mt-0">
-                {children}
-              </main>
-            </div>
+            {children}
             <Toaster richColors />
           </QueryProvider>
         </ThemeProvider>
