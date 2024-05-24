@@ -1,7 +1,7 @@
 import { getFipeInformation } from '@/api/get-fipe-information'
 import { Button } from '@/components/ui/button'
 import { vehicleTypeIds } from '@/config/vehicle'
-import { useAppStore } from '@/hooks/use-app-store'
+import { useFipeInformationCard } from '@/hooks/use-fipe-information-card'
 import { BikeIcon, BookmarkIcon, CarIcon, TruckIcon, XIcon } from 'lucide-react'
 
 type Props = {
@@ -13,39 +13,9 @@ export function FipeInformationCard({
   fipeInformation,
   isInSavedList = false,
 }: Props) {
-  const { savedInformation } = useAppStore()
-  const isSaved = savedInformation.some(
-    (item) => item.id === fipeInformation.id,
-  )
-
-  function handleSave() {
-    useAppStore.setState((state) => {
-      if (isSaved) {
-        return {
-          ...state,
-          savedInformation: state.savedInformation.filter(
-            (item) => item.id !== fipeInformation.id,
-          ),
-        }
-      }
-
-      return {
-        ...state,
-        savedInformation: state.savedInformation.concat(fipeInformation),
-      }
-    })
-  }
-
-  function handleRemove() {
-    useAppStore.setState((state) => {
-      return {
-        ...state,
-        savedInformation: state.savedInformation.filter(
-          (item) => item.id !== fipeInformation.id,
-        ),
-      }
-    })
-  }
+  const { date, handleRemove, handleSave, isSaved } = useFipeInformationCard({
+    fipeInformation,
+  })
 
   return (
     <div className="flex flex-col gap-2 rounded-lg bg-emerald-700 p-5 text-primary-foreground dark:bg-emerald-300 md:flex-row">
@@ -63,7 +33,8 @@ export function FipeInformationCard({
         <span className="font-bold">{`${fipeInformation.marca} ${fipeInformation.modelo} ${fipeInformation.anoModelo}`}</span>
         <span className="text-3xl font-black">{fipeInformation.valor}</span>
         <span className="font-light">
-          atualizado em: {fipeInformation.updatedAt.toLocaleString()}
+          atualizado em:{' '}
+          {`${date.calendar}, ${date.hours}:${date.minutes}:${date.seconds}`}
         </span>
       </div>
       {isInSavedList ? (
