@@ -20,8 +20,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={cn('font-roboto antialiased', roboto.variable)}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn('font-roboto antialiased', roboto.variable)}
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
